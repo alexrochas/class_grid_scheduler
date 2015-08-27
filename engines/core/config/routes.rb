@@ -1,3 +1,3 @@
 Scheduler::Core::Engine.routes.draw do
-    get '/schedule', to: 'scheduler#schedule'
+    post '/schedule', to: 'scheduler#schedule', :defaults => {:format => 'json'}
 end
