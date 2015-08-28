@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 # Scheduler engine
 gem 'scheduler_core', path: 'engines/core'
+# Scheduler model engine
+gem 'scheduler_model', path: 'engines/model'
 # Modular engine
 gem 'modular_engine'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

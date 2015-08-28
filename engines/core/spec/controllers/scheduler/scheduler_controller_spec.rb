@@ -5,23 +5,32 @@ module Scheduler
     describe SchedulerController do
         set_engine_routes
 
-        context 'Scheduling' do
-            describe 'POST Schedule' do
+        context 'scheduling classes' do
+            describe '#schedule' do
 
-                it 'should return error when no data is passed' do
-                    post :schedule
-                    expect(response.body).to match /You should provide data/im
+                before(:each) do
+                    file = File.open("#{Scheduler::Core::Engine.root}/spec/resources/request-data.json").read
+                    @request_data = MultiJson.load(file)
                 end
 
-                it 'should receive data' do
-                    post :schedule, {:data => "Test data."}
-                    expect { print(request.params['data']) }
-                        .to output('Test data.').to_stdout
+                context 'when data is not passed' do
+                    it 'should return error message' do
+                        post :schedule
+                        expect(response.body).to match(/You provided an invalid json/im)
+                    end
                 end
 
-                it 'not implemented yet' do
-                    post :schedule, {:data => "Test data"}
-                    expect(response.body).to match /not implemented yet/im
+                context 'when data is valid' do
+                    it 'should return output equals to input json' do
+                        post :schedule, @request_data
+                        expect(MultiJson.load(response.body)).to eq(@request_data)
+                    end
+
+                    it 'should return a grid with classes'
+
+                    context 'when not have a possible solution' do
+                        it 'should return error message'
+                    end
                 end
             end
         end

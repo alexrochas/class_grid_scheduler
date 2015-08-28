@@ -1,0 +1,10 @@
+{
+    "config":{
+        "points_per_day":"4",
+        "week_days":"5"
+    },
+    "classes":[
+        { "code":"001", "name":"ALG", "points":"4", "teacher":"Alex" },
+        { "code":"002", "name":"ENG", "points":"4", "teacher":"FHC" }
+    ]
+}

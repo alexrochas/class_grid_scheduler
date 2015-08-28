@@ -21,6 +21,7 @@ require File.expand_path("../../../../config/environment", __FILE__)
 
 # Require Factory Girl and DatabaseCleaner
 require 'rspec/rails'
+require 'multi_json'
 
 # Set the ENGINE_RAILS_ROOT variable
 ENGINE_RAILS_ROOT=File.join(File.dirname(__FILE__), '../')
