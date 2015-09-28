@@ -21,15 +21,20 @@ module Scheduler
                 end
 
                 context 'when data is valid' do
-                    it 'should return output equals to input json' do
-                        post :schedule, @request_data
-                        expect(MultiJson.load(response.body)).to eq(@request_data)
-                    end
-
                     it 'should return a grid with classes'
 
                     context 'when not have a possible solution' do
                         it 'should return error message'
+                    end
+                end
+
+                context 'when two classes are passed to one day' do
+                    it 'should return two possible forms' do
+                        post :schedule, @request_data
+
+                        given_response = MultiJson.load(response.body)
+                        byebug
+                        expect(given_response).to eq(expect_response)
                     end
                 end
             end
