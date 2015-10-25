@@ -1,7 +1,7 @@
 module Scheduler
     class SchedulerController < ApplicationController
         before_action do |controller|
-            unless params['config'] != nil and params['classes'] != nil
+            if params['config'] == nil or params['classes'] == nil
                 render :json => {:error => "You provided an invalid json."}, :status => :not_found
             end
         end
@@ -28,7 +28,7 @@ module Scheduler
                 partial_points += 4
             end
 
-            grids = classes.permutation.to_a
+            grids = classes.combination(5).to_a
 
             render :json => {
                 :grids => grids
