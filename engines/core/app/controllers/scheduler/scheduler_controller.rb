@@ -1,60 +1,42 @@
 module Scheduler
-    class SchedulerController < ApplicationController
-        before_action do |controller|
-            if params['config'] == nil or params['classes'] == nil
-                render :json => {:error => "You provided an invalid json."}, :status => :not_found
-            end
-        end
-
-        # Returns an json grid.
-        # Receives config and classes to schedule an possible grid.
-        def schedule
-            classes = params['classes']
-            config = params['config']
-
-            week_days = config['week_days'].to_i
-            points_per_day = config['points_per_day'].to_i
-            total_points = week_days * points_per_day
-
-            days = (0..week_days).map{|week_day| Day.new(points_per_day)}.reduce(Array.new){|array,n| array.push(n)}
-
-            days.
-            partial_points = 0
-            classes.each do |class_|
-                partial_points += class_['points'].to_i
-            end
-
-            while partial_points < total_points do
-                classes.push({})
-                partial_points += 4
-            end
-
-            grids = classes.combination(5).to_a
-
-            render :json => {
-                :grids => grids
-            }
-        end
+  class SchedulerController < ApplicationController
+    before_action do |controller|
+      if params['config'] == nil or params['classes'] == nil
+        render :json => {:error => "You provided an invalid json."}, :status => :not_found
+      end
     end
 
-    class Day
-        attr_accessor :points, :classes
+    rescue_from Exception, with: :schedule_error
 
-        def initialize(points_per_day)
-            @points = points_per_day
-            @classes = Array.new
-        end
+    # Returns an json grid.
+    # Receives config and classes to schedule an possible grid.
+    def schedule
+      classes = params['classes'].map{|_class| Core::Course.new_from_json(_class)}.collect()
+      Struct.new("Config" ,:week_days, :points_per_day)
+      config = Struct::Config.new(params['config']['week_days'].to_i, params['config']['points_per_day'].to_i)
 
-        def remaining_points
-            return @points - self.used_points
-        end
+      total_points = classes.map{|_class| _class.points}.reduce(0){|i,j| i+j}
+      days_needed = total_points / config.points_per_day
 
-        private
+      days = (1..days_needed)
+        .map{|week_day| Core::Day.new(config.points_per_day)}
+        .reduce(Array.new){|array,n| array.push(n)}
 
-        def used_points
-            @classes.map{|_class| _class['points']}.reduce{:+}
-        end
+      classes.map{|_class| days.find{|day| day.is_full?(_class)}.classes.push(_class)}
 
+      grids = days.combination(config.week_days).to_a
+
+      render :json => {
+        :grids => grids
+      }
     end
 
+    def schedule_error e
+      render :json => {
+        :error => "Ops! An error occured during class scheduling. Check your data.",
+        :message => e.message
+      }, :status => 406
+    end
+
+  end
 end
