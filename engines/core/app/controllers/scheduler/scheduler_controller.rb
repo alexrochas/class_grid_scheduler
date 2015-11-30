@@ -20,7 +20,6 @@ module Scheduler
 
       total_points = classes.map{|_class| _class.points}.reduce(0){|i,j| i+j}
       days_needed = total_points(total_points, config.points_per_day)
-      byebug
       days = (1..days_needed)
         .map{|week_day| Core::Day.new(config.points_per_day)}
         .reduce(Array.new){|array,n| array.push(n)}
@@ -47,11 +46,11 @@ module Scheduler
     end
 
     private
-    
+
       def total_points(total_points, points_per_day)
         total_points.fdiv(points_per_day).ceil
       end
-      
+
       def sanitize(classes, config)
         classes.each do |class_|
           if(class_.points > config.points_per_day)
