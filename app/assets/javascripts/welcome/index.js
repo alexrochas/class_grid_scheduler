@@ -75,19 +75,19 @@ $(document).ready(function() {
                     console.log(day_);
                     $.each(day_.classes, function(index, class_){
                         console.log("Classes")
-                        var class_div = $("<div style='border:1px solid black' class='well'/>");
-                        var p = $("<p/>");
-                        p.append("Code:");
-                        p.text(class_.code);
-                        class_div.append(p);
-                        var p = $("<p/>");
-                        p.append("Name:");
-                        p.text(class_.name);
-                        class_div.append(p);
-                        var p = $("<p/>");
-                        p.append("Points:");
-                        p.text(class_.points);
-                        class_div.append(p);
+                        var class_div = $("<div class='well'/>");
+                        var code = $("<p/>");
+                        code.append("Code:");
+                        code.text(class_.code);
+                        class_div.append(code);
+                        var name = $("<p/>");
+                        name.append("Name:");
+                        name.text(class_.name);
+                        class_div.append(name);
+                        var points = $("<p/>");
+                        points.append("Points:");
+                        points.text(class_.points);
+                        class_div.append(points);
                         day.append(class_div);
                     });
                     grid.append(day);
