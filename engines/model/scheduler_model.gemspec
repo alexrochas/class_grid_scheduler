@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = Scheduler::Model::VERSION
   s.authors     = ["Alex Rocha"]
   s.email       = ["arocha@motorola.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Scheduler::Model."
-  s.description = "TODO: Description of Scheduler::Model."
+  s.homepage    = "http://alexrochas.github.io"
+  s.summary     = "Summary of Scheduler::Model."
+  s.description = "Description of Scheduler::Model."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]

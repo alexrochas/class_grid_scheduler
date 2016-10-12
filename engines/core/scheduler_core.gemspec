@@ -8,10 +8,10 @@ Gem::Specification.new do |s|
     s.name        = "scheduler_core"
     s.version     = Scheduler::Core::VERSION
     s.authors     = ["Alex Rocha"]
-    s.email       = ["arocha@motorola.com"]
-    s.homepage    = "TODO"
-    s.summary     = "TODO: Summary of Scheduler::Core."
-    s.description = "TODO: Description of Scheduler::Core."
+    s.email       = ["alex.rochas@yahoo.com.br"]
+    s.homepage    = "http://alexrochas.github.io"
+    s.summary     = "Summary of Scheduler::Core."
+    s.description = "Description of Scheduler::Core."
     s.license     = "MIT"
 
     s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
