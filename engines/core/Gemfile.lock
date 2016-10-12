@@ -1,4 +1,11 @@
 PATH
+  remote: ../model
+  specs:
+    scheduler_model (0.0.1)
+      deface
+      rails (~> 4.2.3)
+
+PATH
   remote: .
   specs:
     scheduler_core (0.0.1)
@@ -7,13 +14,6 @@ PATH
       multi_json (~> 1.11.2)
       rails (~> 4.2.3)
       scheduler_model
-
-PATH
-  remote: ../model
-  specs:
-    scheduler_model (0.0.1)
-      deface
-      rails (~> 4.2.3)
 
 GEM
   remote: https://rubygems.org/
@@ -145,3 +145,6 @@ DEPENDENCIES
   scheduler_core!
   scheduler_model!
   sqlite3
+
+BUNDLED WITH
+   1.12.5

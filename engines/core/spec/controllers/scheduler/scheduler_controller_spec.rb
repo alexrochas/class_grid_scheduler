@@ -33,7 +33,6 @@ module Scheduler
                         post :schedule, @request_data
 
                         given_response = MultiJson.load(response.body)
-                        byebug
                         expect(given_response).to eq(expect_response)
                     end
                 end
