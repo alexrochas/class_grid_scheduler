@@ -75,7 +75,7 @@ $(document).ready(function() {
                     console.log(day_);
                     $.each(day_.classes, function(index, class_){
                         console.log("Classes")
-                        var class_div = $("<div style='border:1px solid black'/>");
+                        var class_div = $("<div style='border:1px solid black' class='well'/>");
                         var p = $("<p/>");
                         p.append("Code:");
                         p.text(class_.code);
