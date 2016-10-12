@@ -1,3 +1,6 @@
 == Class Grid Scheduler
 
+{<img src="https://travis-ci.org/alexrochas/class_grid_scheduler.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/alexrochas/class_grid_scheduler]
+{<img src="https://coveralls.io/repos/github/alexrochas/class_grid_scheduler/badge.svg?branch=master" alt="Coverage Status" />}[https://coveralls.io/github/alexrochas/class_grid_scheduler?branch=master]
+
 In development. Soon at least I will migrate this readme to a markdown style.
