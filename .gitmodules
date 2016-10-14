@@ -1,0 +1,6 @@
+[submodule "engines/model"]
+	path = engines/model
+	url = git@github.com:alexrochas/class_grid_scheduler_model.git
+[submodule "engines/core"]
+	path = engines/core
+	url = git@github.com:alexrochas/class_grid_scheduler_core.git
