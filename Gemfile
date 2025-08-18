@@ -7,7 +7,7 @@ gem 'scheduler_model', path: 'engines/model'
 # Modular engine
 gem 'modular_engine'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '7.1.5.2'
 # Postgresql
 gem 'pg'
 # Use SCSS for stylesheets
